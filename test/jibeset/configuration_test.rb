@@ -15,7 +15,7 @@ class ConfigurationTest < Jibeset::Test
 
   def test_configure
     @valid_config.call
-    assert_equal Jibeset.oauth_callback, 'DEFAULT_OAUTH_CALLBACK'
+    assert_equal Jibeset.oauth_callback, nil
   end
 
   def test_reset

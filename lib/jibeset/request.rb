@@ -35,7 +35,7 @@ module Jibeset
           request.body = options unless options.empty?
         end
       end
-      raw ? response : response.body
+      response 
     end
 
     def formatted_path(path)

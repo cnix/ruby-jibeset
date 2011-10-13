@@ -6,27 +6,44 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'jibeset'
 
-require 'webmock/test_unit'
-# Don't care about HTTP requests for now
-WebMock.disable_net_connect!
-
 module Jibeset
   class Test < Test::Unit::TestCase
   
     def self.valid_config
       -> {
         Jibeset.configure do |config|
-          Jibeset.adapter          = 'DEFAULT_ADAPTER'
-          Jibeset.consumer_key     = 'DEFAULT_CONSUMER_KEY'
-          Jibeset.consumer_secret  = 'DEFAULT_CONSUMER_SECRET'
-          Jibeset.oauth_token      = 'DEFAULT_OAUTH_TOKEN'
-          Jibeset.oauth_callback   = 'DEFAULT_OAUTH_CALLBACK'
-          Jibeset.endpoint         = 'DEFAULT_ENDPOINT'
-          Jibeset.format           = 'DEFAULT_FORMAT'
-          Jibeset.user_agent       = 'DEFAULT_USER_AGENT'
-          Jibeset.proxy            = 'DEFAULT_PROXY'
+          Jibeset.adapter          = :net_http
+          Jibeset.consumer_key     =  nil
+          Jibeset.consumer_secret  =  nil
+          Jibeset.oauth_token      =  nil
+          Jibeset.oauth_callback   =  nil
+          Jibeset.endpoint         = 'http://jibeset.heroku.com/'
+          Jibeset.format           = 'json'
+          Jibeset.user_agent       = 'Jibeset Ruby Gem 0.1'
+          Jibeset.proxy            =  'wtf'
         end
       }
+    end
+
+  end
+
+  class API
+    attr_accessor :stubs
+
+    def connection
+      options = {
+        :headers => {'Accept' => "application/#{format}; charset=utf-8", 'User-Agent' => user_agent},
+        :proxy => proxy,
+        :ssl => {:verify => false},
+        :url => endpoint,
+        :consumer_key => consumer_key,
+        :oauth_token => oauth_token
+      }
+
+      Faraday.new(options) do |connection|
+        connection.request :json
+        connection.adapter :test, @stubs
+      end
     end
   end
 end
