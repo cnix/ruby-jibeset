@@ -22,6 +22,11 @@ module Jibeset
         response.body
       end
 
+      def me
+        response = get("/me")
+        response.body
+      end
+
     end
   end
 end

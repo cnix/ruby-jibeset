@@ -3,7 +3,11 @@ require File.expand_path('../lib/jibeset/version', __FILE__)
 
 Gem::Specification.new do |s|
   s.add_runtime_dependency('faraday', '>= 0.7')
+  s.add_runtime_dependency('faraday_middleware')
   s.add_runtime_dependency('oauth2')
+  s.add_runtime_dependency('yajl-ruby')
+  s.add_development_dependency('ruby-debug19')
+  s.add_development_dependency('geminabox')
   s.authors = ["Claude Nix"]
   s.description = %q{A Ruby wrapper for the jibeset REST and Search APIs}
   s.email = ['claude@seadated.com']

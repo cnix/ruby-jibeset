@@ -7,9 +7,9 @@ module Jibeset
     # An array of valid keys in the options hash when configuring a {Jibeset::API}
     VALID_OPTIONS_KEYS = [
       :adapter,
-      :consumer_key,
-      :consumer_secret,
-      :oauth_token,
+      :client_id,
+      :client_secret,
+      :access_token,
       :endpoint,
       :format,
       :user_agent,
@@ -29,16 +29,16 @@ module Jibeset
     DEFAULT_ADAPTER = Faraday.default_adapter
 
     # By default, don't set an application ID
-    DEFAULT_CONSUMER_KEY = nil
+    DEFAULT_CLIENT_ID = nil
 
     # By default, don't set an application secret
-    DEFAULT_CONSUMER_SECRET = nil
+    DEFAULT_CLIENT_SECRET = nil
 
     # By default, don't set an application redirect uri
     DEFAULT_REDIRECT_URI = nil
 
     # By default, don't set a user access token
-    DEFAULT_OAUTH_TOKEN = nil
+    DEFAULT_ACCESS_TOKEN = nil
 
     # By default, don't set an oauth callback url
     DEFAULT_OAUTH_CALLBACK = nil
@@ -82,9 +82,9 @@ module Jibeset
     # Reset all configuration options to defaults
     def reset
       self.adapter          = DEFAULT_ADAPTER
-      self.consumer_key     = DEFAULT_CONSUMER_KEY
-      self.consumer_secret  = DEFAULT_CONSUMER_SECRET
-      self.oauth_token      = DEFAULT_OAUTH_TOKEN
+      self.client_id        = DEFAULT_CLIENT_ID
+      self.client_secret    = DEFAULT_CLIENT_SECRET
+      self.access_token     = DEFAULT_ACCESS_TOKEN
       self.oauth_callback   = DEFAULT_OAUTH_CALLBACK
       self.endpoint         = DEFAULT_ENDPOINT
       self.format           = DEFAULT_FORMAT

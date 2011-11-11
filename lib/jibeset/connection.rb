@@ -1,5 +1,5 @@
-# require 'faraday_middleware'
-# Dir[File.expand_path('../../faraday/*.rb', __FILE__)].each{|f| require f}
+require 'faraday_middleware'
+Dir[File.expand_path('../../faraday/*.rb', __FILE__)].each{|f| require f}
 
 module Jibeset
   # @private
@@ -12,11 +12,12 @@ module Jibeset
         :proxy => proxy,
         :ssl => {:verify => false},
         :url => endpoint,
-        :consumer_key => consumer_key,
-        :oauth_token => oauth_token
+        :client_id => client_id,
+        :access_token => access_token
       }
 
       Faraday::Connection.new(options) do |builder|
+        builder.use Faraday::Request::OAuth2, client_id, access_token
         # builder.use Faraday::Request::OAuth
         # builder.use Faraday::Response::Logger
         builder.use Faraday::Request::JSON
