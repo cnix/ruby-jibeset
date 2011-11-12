@@ -12,6 +12,7 @@ module Jibeset
     # Return an access token from authorization
     def get_access_token(code, options={})
       options[:grant_type] ||= "authorization_code"
+      options[:redirect_uri] = oauth_callback
       params = access_token_params.merge(options)
       post("/oauth/token/", params.merge(:code => code), unformatted=true)
     end
