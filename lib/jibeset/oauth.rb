@@ -4,6 +4,7 @@ module Jibeset
     # Return URL for OAuth authorization
     def authorize_url(options={})
       options[:response_type] ||= "code"
+      options[:redirect_uri] = oauth_callback
       params = access_token_params.merge(options)
       connection.build_url("/oauth/authorize/", params).to_s
     end
