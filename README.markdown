@@ -9,7 +9,7 @@ Configure
 Jibeset.configure do |config|
   config.client_id      = 'YOUR_CLIENT_ID'
   config.client_secret  = 'YOUR_CLIENT_SECRET'
-  config.endpoint       = 'http://yourapp.example.com/api/endpoint'
+  config.endpoint       = 'http://jibeset.heroku.com/'
   config.oauth_callback = 'http://yourapp.example.com/oauth_callback'
 end
 ```
@@ -20,7 +20,7 @@ Authorization Flow
 # Get an authorization code from the JibeSet OAuth Provider
 # Pretend this is in a sinatra app
 get '/auth/oauth' do
-  redirect Jibeset.authorize_url(oauth_callback)
+  redirect Jibeset.authorize_url
 end
 
 # Use the authorization code to get an access code
