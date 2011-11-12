@@ -9,18 +9,19 @@ module Jibeset
     end
 
     # Return an access token from authorization
-    def access_token(code, options={})
+    def get_access_token(code, options={})
       options[:grant_type] ||= "authorization_code"
       params = access_token_params.merge(options)
-      post("/oauth/access_token/", params.merge(:code => code), raw=false, unformatted=true)
+      post("/oauth/token/", params.merge(:code => code), unformatted=true)
     end
+    
 
     private
 
     def access_token_params
       {
-        :consumer_key => consumer_key,
-        :consumer_secret => consumer_secret
+        :client_id => client_id,
+        :client_secret => client_secret
       }
     end
   end

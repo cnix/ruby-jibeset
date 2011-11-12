@@ -13,9 +13,9 @@ module Jibeset
       -> {
         Jibeset.configure do |config|
           Jibeset.adapter          = :net_http
-          Jibeset.consumer_key     =  nil
-          Jibeset.consumer_secret  =  nil
-          Jibeset.oauth_token      =  nil
+          Jibeset.client_id        =  nil
+          Jibeset.client_secret    =  nil
+          Jibeset.access_token     =  nil
           Jibeset.oauth_callback   =  nil
           Jibeset.endpoint         = 'http://jibeset.heroku.com/'
           Jibeset.format           = 'json'
@@ -36,8 +36,8 @@ module Jibeset
         :proxy => proxy,
         :ssl => {:verify => false},
         :url => endpoint,
-        :consumer_key => consumer_key,
-        :oauth_token => oauth_token
+        :client_id => client_id,
+        :access_token => access_token
       }
 
       Faraday.new(options) do |connection|
