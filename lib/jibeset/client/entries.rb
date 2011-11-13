@@ -3,8 +3,7 @@ module Jibeset
     module Entries
 
       def register(payload)
-        response = post("event/#{payload['event']['id']}/entries")
-        response.body
+        post("event/#{payload['event']['id']}/entries")
       end
 
     end

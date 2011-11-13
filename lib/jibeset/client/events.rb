@@ -7,38 +7,31 @@ module Jibeset
       end
 
       def event(payload)
-        response = get("/events/#{payload[:id]}")
-        response.body
+        get("/events/#{payload[:id]}")
       end
 
       def event_entries(payload)
-        response = get("/events/#{payload[:id]}/entries")
-        response.body
+        get("/events/#{payload[:id]}/entries")
       end
 
       def event_fleets(payload)
-        response = get("/events/#{payload[:id]}/fleets")
-        response.body
+        get("/events/#{payload[:id]}/fleets")
       end
 
       def create_event(payload)
-        response = post("/events", payload)
-        response.body
+        post("/events", payload)
       end
 
       def update_event(payload)
-        response = put("/events/#{payload['id']}", payload)
-        response.body
+        put("/events/#{payload['id']}", payload)
       end
 
       def destroy_event(payload)
-        response = delete("/events/#{payload['id']}")
-        response.body
+        delete("/events/#{payload['id']}")
       end
 
       def register_entry(payload)
-        response = post("/events/#{payload[:event_id]}/entries", payload)
-        response.body
+        post("/events/#{payload[:event_id]}/entries", payload)
       end
 
     end
