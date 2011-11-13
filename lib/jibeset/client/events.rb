@@ -16,6 +16,11 @@ module Jibeset
         response.body
       end
 
+      def event_fleets(payload)
+        response = get("/events/#{payload[:id]}/fleets")
+        response.body
+      end
+
       def create_event(payload)
         response = post("/events", payload)
         response.body
