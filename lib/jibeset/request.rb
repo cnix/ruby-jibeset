@@ -25,7 +25,7 @@ module Jibeset
 
     # Perform an HTTP request
     def request(method, path, options, raw=false, unformatted=false)
-      response = connection(raw).send(method) do |request|
+      response = connection.send(method) do |request|
         path = formatted_path(path) unless unformatted
         case method
         when :get, :delete

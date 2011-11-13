@@ -9,6 +9,8 @@ module Jibeset
     include Jibeset::Client::Utils
     include Jibeset::Client::Users
     include Jibeset::Client::Events
+    include Jibeset::Client::Fleets
+    include Jibeset::Client::Entries
   end
 end
 
