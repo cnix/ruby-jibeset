@@ -2,8 +2,8 @@ module Jibeset
   class Client
     module Fleets
 
-      def fleets
-        get("/fleets")
+      def fleets(payload)
+        get("/events/#{payload[:event_id]}/fleets")
       end
 
       def fleet(payload)
