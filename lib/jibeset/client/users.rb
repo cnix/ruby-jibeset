@@ -3,28 +3,23 @@ module Jibeset
     module Users
 
       def create_user(payload)
-        response = post("/users", payload)
-        response.body
+        post("/users", payload)
       end
 
       def user(payload)
-        response = get("/users/#{payload[:id]}")
-        response.body
+        get("/users/#{payload[:id]}")
       end
 
       def update_user(payload)
-        response = put("/users/#{payload[:id]}", payload)
-        response.body
+        put("/users/#{payload[:id]}", payload)
       end
 
       def destroy_user(payload)
-        response = delete("/users/#{payload[:id]}")
-        response.body
+        delete("/users/#{payload[:id]}")
       end
 
       def me
-        response = get("/me")
-        response.body
+        get("/me")
       end
 
     end

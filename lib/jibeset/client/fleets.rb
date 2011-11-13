@@ -7,23 +7,19 @@ module Jibeset
       end
 
       def fleet(payload)
-        response = get("/events/#{payload[:event_id]}/fleets/#{payload[:id]}")
-        response.body
+        get("/events/#{payload[:event_id]}/fleets/#{payload[:id]}")
       end
 
       def create_fleet(payload)
-        response = post("/events/#{payload[:event_id]}/fleets", payload)
-        response.body
+        post("/events/#{payload[:event_id]}/fleets", payload)
       end
 
       def update_fleet(payload)
-        response = put("/events/#{payload[:event_id]}/fleets/#{payload[:id]}", payload)
-        response.body
+        put("/events/#{payload[:event_id]}/fleets/#{payload[:id]}", payload)
       end
 
       def destroy_fleet(payload)
-        response = delete("/events/#{payload[:event_id]}/fleets/#{payload[:id]}")
-        response.body
+        delete("/events/#{payload[:event_id]}/fleets/#{payload[:id]}")
       end
 
     end

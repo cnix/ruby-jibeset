@@ -15,7 +15,7 @@ module Jibeset
       options[:grant_type] ||= "authorization_code"
       options[:redirect_uri] = oauth_callback
       params = access_token_params.merge(options)
-      post("/oauth/token/", params.merge(:code => code), unformatted=true)
+      post("/oauth/token/", params.merge(:code => code), false, unformatted=true)
     end
     
 
