@@ -1,4 +1,4 @@
 module Jibeset
-  VERSION = '0.10.1'.freeze unless defined?(::Jibeset::VERSION)
+  VERSION = '0.2'.freeze unless defined?(::Jibeset::VERSION)
 end
 
