@@ -16,8 +16,15 @@ module Jibeset
 
       Faraday::Connection.new(options) do |builder|
         builder.use Faraday::Request::OAuth2, client_id, access_token
+
+        # It seems that I don't understand the way Faraday likes things ordered.
+        # Mashify needs a ruby object to mash, so the response needs to run
+        # through ParseJson first. If you order them that way, Mashify gets
+        # JSON, and can't mash it. Am I crazy?
+        builder.use Faraday::Response::Mashify unless raw
+        builder.use Faraday::Response::ParseJson # always deal with json
+
         builder.adapter(adapter)
-        builder.use Faraday::Response::ParseJson
       end
     end
   end
