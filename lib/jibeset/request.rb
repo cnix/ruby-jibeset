@@ -1,3 +1,4 @@
+require 'hashie'
 module Jibeset
   # Defines HTTP request methods
   module Request
@@ -25,7 +26,7 @@ module Jibeset
 
     # Perform an HTTP request
     def request(method, path, options, raw=false, unformatted=false)
-      response = connection.send(method) do |request|
+      response = connection(raw).send(method) do |request|
         path = formatted_path(path) unless unformatted
         case method
         when :get, :delete
@@ -35,7 +36,7 @@ module Jibeset
           request.body = options unless options.empty?
         end
       end
-      raw ? response : response.body 
+      raw ? response : Hashie::Mash.new(response.body)
     end
 
     def formatted_path(path)
