@@ -16,6 +16,7 @@ module Jibeset
 
       Faraday::Connection.new(options) do |builder|
         builder.use Faraday::Request::OAuth2, client_id, access_token
+        builder.use Faraday::Request::JSON
 
         # It seems that I don't understand the way Faraday likes things ordered.
         # Mashify needs a ruby object to mash, so the response needs to run
