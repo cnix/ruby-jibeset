@@ -22,10 +22,8 @@ module Jibeset
     private
 
     def access_token_params
-      {
-        :client_id => client_id,
-        :client_secret => client_secret
-      }
+      { :client_id => client_id,
+        :client_secret => client_secret }
     end
   end
 end
