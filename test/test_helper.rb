@@ -30,7 +30,7 @@ module Jibeset
   class API
     attr_accessor :stubs
 
-    def connection
+    def connection(raw=false)
       options = {
         :headers => {'Accept' => "application/#{format}; charset=utf-8", 'User-Agent' => user_agent},
         :proxy => proxy,
