@@ -12,6 +12,7 @@ module Jibeset
     include Jibeset::Client::Fleets
     include Jibeset::Client::Entries
     include Jibeset::Client::Boat
+    include Jibeset::Client::Search
   end
 end
 
