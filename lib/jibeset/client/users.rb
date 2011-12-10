@@ -22,6 +22,10 @@ module Jibeset
         get("/me")
       end
 
+      def login(payload)
+        post('/users/sign_in', payload)
+      end
+
     end
   end
 end
