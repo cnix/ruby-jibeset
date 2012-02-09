@@ -7,7 +7,7 @@ module Jibeset
       options[:redirect_uri] = oauth_callback
       authorize_path = options[:authorize_path] || "/oauth/authorize/"
       params = access_token_params.merge(options)
-      connection.build_url(authorize_path, params).to_s
+      post(authorize_path, params, false, unformatted=true)
     end
 
     # Return an access token from authorization

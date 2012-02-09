@@ -3,9 +3,7 @@ module Jibeset
     module Boat
 
       def boats(payload={})
-        if payload[:boat]
-          post('/boats', payload)
-        elsif payload[:user_id]
+        if payload[:user_id]
           get("/users/#{payload[:user_id]}/boats")
         else
           get("/boats")
@@ -16,8 +14,12 @@ module Jibeset
         get("/boats/#{payload[:id]}")
       end
 
+      def create_boat(payload)
+        post('/boats', payload)
+      end
+
       def update_boat(payload)
-        put("/boats/#{payload[:boat][:id]}", payload)
+        put("/boats/#{payload[:id]}", payload)
       end
 
       def destroy_boat(payload)

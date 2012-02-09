@@ -6,8 +6,16 @@ module Jibeset
         post("/events/#{payload[:event_id]}/entries", payload)
       end
 
-      def entries(payload={})
-        get("/events/#{payload[:event_id]}/entries")
+      def entries(payload)
+        if payload[:fleet_id]
+          get("/fleets/#{payload[:fleet_id]}/entries")
+        else
+          get("/events/#{payload[:event_id]}/entries")
+        end
+      end
+
+      def entry(payload)
+        get("/entries/#{payload[:id]}")
       end
 
     end

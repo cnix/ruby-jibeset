@@ -35,7 +35,8 @@ module Jibeset
       end
 
       def organization_admin(payload)
-        get("/organizations/#{payload[:organization_id]}/admins/#{payload[:user_id]}")
+        response = get("/organizations/#{payload[:organization_id]}/admins/#{payload[:user_id]}", {}, true)
+        response.status == 204 ? true : false
       end
 
       def add_member_to_organization(payload)

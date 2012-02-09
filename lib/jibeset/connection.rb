@@ -22,8 +22,10 @@ module Jibeset
         # Mashify needs a ruby object to mash, so the response needs to run
         # through ParseJson first. If you order them that way, Mashify gets
         # JSON, and can't mash it. Am I crazy?
-        builder.use Faraday::Response::Mashify unless raw
-        builder.use Faraday::Response::ParseJson # always deal with json
+        builder.use FaradayMiddleware::Mashify unless raw
+        builder.use FaradayMiddleware::ParseJson # always deal with json
+        builder.use Faraday::Response::RaiseError
+        
 
         builder.adapter(adapter)
       end

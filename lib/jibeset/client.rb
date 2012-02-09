@@ -10,10 +10,14 @@ module Jibeset
     include Jibeset::Client::Users
     include Jibeset::Client::Events
     include Jibeset::Client::Fleets
+    include Jibeset::Client::Races
     include Jibeset::Client::Entries
     include Jibeset::Client::Boat
     include Jibeset::Client::Search
     include Jibeset::Client::Organizations
+    include Jibeset::Client::Results
+    include Jibeset::Client::Followings
+    include Jibeset::Client::CrewPositions
   end
 end
 

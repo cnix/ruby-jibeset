@@ -2,8 +2,14 @@ module Jibeset
   class Client
     module Events
 
-      def events
-        get("/events")
+      def events(payload={})
+        if payload[:user_id]
+          get("/users/#{payload[:user_id]}/events")
+        elsif payload[:organization_id]
+          get("/organizations/#{payload[:organization_id]}/events")
+        else
+          get("/events")
+        end
       end
 
       def event(payload)
@@ -23,11 +29,11 @@ module Jibeset
       end
 
       def update_event(payload)
-        put("/events/#{payload['id']}", payload)
+        put("/events/#{payload[:id]}", payload)
       end
 
       def destroy_event(payload)
-        delete("/events/#{payload['id']}")
+        delete("/events/#{payload[:id]}")
       end
 
       def register_entry(payload)
