@@ -10,6 +10,10 @@ module Jibeset
         end
       end
 
+      def register_entry(payload)
+        post("/fleets/#{payload[:id]}/entries", payload)
+      end
+
       def fleet(payload)
         get("/fleets/#{payload[:id]}")
       end

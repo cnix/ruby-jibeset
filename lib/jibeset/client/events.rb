@@ -36,10 +36,6 @@ module Jibeset
         delete("/events/#{payload[:id]}")
       end
 
-      def register_entry(payload)
-        post("/events/#{payload[:event_id]}/entries", payload)
-      end
-
     end
   end
 end
