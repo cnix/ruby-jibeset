@@ -26,6 +26,14 @@ module Jibeset
         post('/users/sign_in', payload)
       end
 
+      def user_news_feed(payload)
+        get("/users/#{payload[:id]}/news_feed", payload)
+      end
+
+      def user_activity_feed(payload)
+        get("/users/#{payload[:id]}/activity_feed", payload)
+      end
+
     end
   end
 end

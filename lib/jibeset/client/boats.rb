@@ -26,6 +26,10 @@ module Jibeset
         delete("/boats/#{payload[:id]}")
       end
 
+      def boat_activity_feed(payload)
+        get("/boats/#{payload[:id]}/activity_feed", payload)
+      end
+
     end
   end
 end

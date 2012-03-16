@@ -36,6 +36,10 @@ module Jibeset
         delete("/events/#{payload[:id]}")
       end
 
+      def event_activity_feed(payload)
+        get("/events/#{payload[:id]}/activity_feed", payload)
+      end
+
     end
   end
 end

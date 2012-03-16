@@ -55,6 +55,10 @@ module Jibeset
         delete("/organizations/#{payload[:organization_id]}/admins/#{payload[:user_id]}")
       end
 
+      def organization_activity_feed(payload)
+        get("/organizations/#{payload[:id]}/activity_feed", payload)
+      end
+
     end
   end
 end
