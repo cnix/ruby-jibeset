@@ -14,10 +14,6 @@ module Jibeset
         put("/users/#{payload[:id]}", payload)
       end
 
-      def destroy_user(payload)
-        delete("/users/#{payload[:id]}")
-      end
-
       def me
         get("/me")
       end
