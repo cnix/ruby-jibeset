@@ -36,7 +36,9 @@ module Jibeset
 
       def organization_admin(payload)
         response = get("/organizations/#{payload[:organization_id]}/admins/#{payload[:user_id]}", {}, true)
-        response.status == 204 ? true : false
+        response.status == 204 ? true : nil
+      rescue Faraday::Error::ResourceNotFound
+        false
       end
 
       def add_member_to_organization(payload)
