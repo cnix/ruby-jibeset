@@ -14,6 +14,10 @@ module Jibeset
         end
       end
 
+      def entry_count(payload)
+        get("/events/#{payload[:id]}/entries/count")
+      end
+
       def entry(payload)
         get("/entries/#{payload[:id]}")
       end
