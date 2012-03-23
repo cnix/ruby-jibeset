@@ -2,9 +2,8 @@ module Jibeset
   class Client
     module Search
 
-      def search(query)
-        query = { q: query }
-        get('/search', query)
+      def search(payload)
+        get('/search', payload)
       end
 
     end
