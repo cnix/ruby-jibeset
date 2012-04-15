@@ -12,6 +12,10 @@ module Jibeset
         end
       end
 
+      def crew_position_roles
+        get("/crew_positions/roles")
+      end
+
     end
   end
 end
