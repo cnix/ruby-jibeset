@@ -24,6 +24,10 @@ module Jibeset
         put("/races/#{payload[:id]}", payload)
       end
 
+      def score_race(payload)
+        put("/races/#{payload[:id]}/score", payload)
+      end
+
     end
   end
 end
