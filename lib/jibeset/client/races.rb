@@ -5,6 +5,8 @@ module Jibeset
       def races(payload={})
         if payload[:fleet_id]
           get("/fleets/#{payload[:fleet_id]}/races")
+        elsif payload[:regatta_id]
+          get("/regattas/#{payload[:regatta_id]}/races")
         elsif payload[:event_id]
           get("/events/#{payload[:event_id]}/races")
         else
