@@ -30,6 +30,10 @@ module Jibeset
         get("/users/#{payload[:id]}/activity_feed", payload)
       end
 
+      def find_by_username(username)
+        get("/#{username}")
+      end
+
     end
   end
 end
