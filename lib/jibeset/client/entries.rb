@@ -9,6 +9,8 @@ module Jibeset
       def entries(payload)
         if payload[:fleet_id]
           get("/fleets/#{payload[:fleet_id]}/entries", payload)
+        elsif payload[:user_id]
+          get("/users/#{payload[:user_id]}/entries", payload)
         else
           get("/events/#{payload[:event_id]}/entries")
         end
