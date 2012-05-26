@@ -3,7 +3,7 @@ module Jibeset
     module Entries
 
       def register(payload)
-        if params[:rc_entry]
+        if payload[:rc_entry]
           post("/entries", payload)
         else
           post("/events/#{payload[:event_id]}/entries", payload)
